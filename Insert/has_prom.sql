@@ -1,0 +1,11 @@
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (1, '2023-01-09', '2023-02-20', 5, 1);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (2, '2023-04-07', '2023-04-25', 1, 3);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (3, '2023-05-13', '2023-06-27', 1, 20);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (4, '2023-07-03', '2023-07-29', 6, 4);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (5, '2023-08-12', '2023-08-23', 3, 25);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (6, '2023-08-28', '2023-09-15', 5, 7);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (7, '2023-09-11', '2023-09-28', 5, 31);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (8, '2023-09-30', '2023-10-28', 7, 15);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (9, '2023-10-30', '2023-11-08', 3, 8);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (10, '2023-11-17', '2023-12-01', 4, 22);
+insert into has_prom (id_has_prom, start_date, end_date, id_promotion_in_has_prom, id_romm_type_in_has_prom) values (11, '2023-12-20', '2024-01-23', 3, 11);

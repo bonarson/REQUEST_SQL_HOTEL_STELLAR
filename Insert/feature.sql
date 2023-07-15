@@ -1,0 +1,10 @@
+insert into feature (feature_name , feature_description) values ('Chambre Standard', 'Modern kitchen');
+insert into feature (feature_name , feature_description) values ('Suite Royale', 'Spacious living room');
+insert into feature (feature_name , feature_description) values ('Chambre Standard', 'Large backyard');
+insert into feature (feature_name , feature_description) values ('Chambre Deluxe', 'Open floor plan');
+insert into feature (feature_name , feature_description) values ('Suite Royale', 'Large backyard');
+insert into feature (feature_name , feature_description) values ('Suite Royale', 'High ceilings');
+insert into feature (feature_name , feature_description) values ('Chambre Familiale', 'Large backyard');
+insert into feature (feature_name , feature_description) values ('Chambre Vue Mer', 'Modern kitchen');
+insert into feature (feature_name , feature_description) values ('Chambre Familiale', 'Modern kitchen');
+insert into feature (feature_name , feature_description) values ('Suite Royale', 'Spacious living room');
