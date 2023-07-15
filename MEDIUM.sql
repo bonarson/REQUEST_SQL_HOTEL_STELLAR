@@ -45,3 +45,58 @@ FROM
     INNER JOIN room r ON r.id_hotel_in_room = h.id_hotel
 GROUP BY
     h.hotel_city, h.hotel_adress;
+
+
+
+
+--9--Afficher la liste des chambres occupées actuellement
+SELECT
+    h.hotel_city AS ville_hotel,
+    h.hotel_adress AS adresse_hotel,
+    r.room_number AS numero_chambre
+FROM
+    reservation res
+    JOIN room r ON r.id_room = res.id_room_in_reservation
+    JOIN hotel h ON h.id_hotel = r.id_hotel_in_room
+WHERE
+    res.start_date_of_stay <= CURRENT_DATE
+    AND res.end_date_of_stay >= CURRENT_DATE;
+
+
+    --------------------------------------------------------------
+
+
+
+---10- Afficher les
+ --chambres les moins réservés d'un hotel donné
+
+SELECT
+    r.room_number AS numero_chambre,
+    COUNT(*) AS nombre_reservations
+FROM
+    reservation res
+    JOIN room r ON r.id_room = res.id_room_in_reservation
+WHERE
+    r.id_hotel_in_room = 4
+GROUP BY
+    r.room_number
+ORDER BY
+    COUNT(*) ASC;
+
+---------------------------------------------------------------
+---11-Afficher les chambres
+-- les plus réservés d'un hotel donné
+SELECT
+    r.room_number AS numero_chambre,
+    COUNT(*) AS nombre_reservations
+FROM
+    reservation res
+    JOIN room r ON r.id_room = res.id_room_in_reservation
+WHERE
+    r.id_hotel_in_room = 4
+GROUP BY
+    r.room_number
+ORDER BY
+    COUNT(*) DESC;
+
+
