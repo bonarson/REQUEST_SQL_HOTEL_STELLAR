@@ -47,6 +47,10 @@ FROM room
 INNER JOIN room_type ON room.id_room_type_in_room = room_type.id_room_type
 ORDER BY room_type.price_of_night DESC;
 
+
+
+
+
 -- 13 -Afficher la liste des chambres dont la description correspond à des mots-clés données 
 
 SELECT *
