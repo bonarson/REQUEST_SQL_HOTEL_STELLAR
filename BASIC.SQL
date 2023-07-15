@@ -36,3 +36,42 @@ FROM room
 INNER JOIN room_type ON room.id_room_type_in_room = room_type.id_room_type
 WHERE room_type.price_of_night >= 20000
 AND room_type.price_of_night <= 60000;
+
+
+
+
+--  12 -Afficher la liste des chambres par prix décroissant
+
+SELECT *
+FROM room
+INNER JOIN room_type ON room.id_room_type_in_room = room_type.id_room_type
+ORDER BY room_type.price_of_night DESC;
+
+-- 13 -Afficher la liste des chambres dont la description correspond à des mots-clés données 
+
+SELECT *
+FROM room
+INNER JOIN room_type ON room.id_room_type_in_room = room_type.id_room_type
+WHERE room_type.service ILIKE '%oncier%'
+OR room_type.service ILIKE '%ellnes%'
+OR room_type.service ILIKE '%wi%';
+
+-- 14-Pour afficher la liste des hôtels qui contiennent des chambres dont la description correspond à 
+des mots-clés donnés:
+
+SELECT DISTINCT hotel.*
+FROM hotel
+INNER JOIN room ON hotel.id_hotel = room.id_hotel_in_room
+INNER JOIN room_type ON room.id_room_type_in_room = room_type.id_room_type
+WHERE room_type.service ILIKE '%oncier%'
+OR room_type.service ILIKE '%ellnes%'
+OR room_type.service ILIKE '%wi%';
+
+--15-Pour afficher les détails sur la chambre qu'occupe un client donné actuellement :
+
+SELECT r.id_room, r.room_number, rt.name_of_room_type, rt.service, rt.price_of_night
+FROM room r
+JOIN reservation res ON r.id_room = res.id_room_in_reservation
+JOIN room_type rt ON r.id_room_type_in_room = rt.id_room_type
+WHERE res.id_customer_in_reservation = 44;
+
