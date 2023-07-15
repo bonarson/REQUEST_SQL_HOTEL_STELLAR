@@ -1,3 +1,4 @@
+
 -- )1- Afficher la liste des receptionnistes, avec l'hotel auquel ils sont rattachés
 select  id_user , first_name,last_name,email,role,hotel_city,hotel_adress,hotel_phone_number,hotel_email from reservation inner join "user" on "user".id_user = reservation.id_user_in_reservation
 inner join room on room.id_room =reservation.id_room_in_reservation
