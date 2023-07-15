@@ -108,3 +108,86 @@ WHERE
 GROUP BY
     h.hotel_city, h.hotel_adress;
 
+
+
+
+
+    ------------------------------------------------------------------------------
+-- 6-Afficher le total de paiement encaissée pour les locations de
+-- chambre uniquement au cours d'une période donnée, pour chaque hotel	
+    SELECT
+    h.hotel_city AS ville_hotel,
+    h.hotel_adress AS adresse_hotel,
+    SUM(p.payement_value) AS total_paiement
+FROM
+    payement p
+    INNER JOIN reservation r ON p.id_reservation_in_payement = r.id_reservation
+    INNER JOIN room ro ON r.id_room_in_reservation = ro.id_room
+    INNER JOIN hotel h ON ro.id_hotel_in_room = h.id_hotel
+WHERE
+    r.start_date_of_stay >= '2023-01-06 10:25:00'
+    AND r.end_date_of_stay <= '2023-06-01 06:20:20'
+GROUP BY
+    h.hotel_city, h.hotel_adress;
+    -----------------------------------------------------------------------------
+--7-Afficher le total de paiement encaissée pour
+-- les locations de salle de conférence uniquement au cours d'une période donnée, pour chaque hotel
+
+SELECT
+    h.hotel_city AS ville_hotel,
+    h.hotel_adress AS adresse_hotel,
+    SUM(p.payement_value) AS total_paiement
+FROM
+    payement p
+    INNER JOIN reservation r ON p.id_reservation_in_payement = r.id_reservation
+    INNER JOIN conference_room cr ON r.id_conference_room_in_reservation = cr.id_conference_room
+    INNER JOIN hotel h ON cr.id_hotel_in_conference_room = h.id_hotel
+WHERE
+    r.start_date_of_stay >= '2023-01-06 10:25:00'
+    AND r.end_date_of_stay <= '2023-06-01 06:20:20'
+GROUP BY
+    h.hotel_city, h.hotel_adress;
+---------------------------------------------------------------------------
+
+--10 --Afficher la liste des hotels qui ont 
+--des chambres libres sur une période demandée par l'utilisateur
+
+SELECT
+    h.hotel_city AS ville_hotel,
+    h.hotel_adress AS adresse_hotel
+FROM
+    hotel h
+WHERE
+    NOT EXISTS (
+        SELECT 1
+        FROM reservation r
+        JOIN room ro ON ro.id_room = r.id_room_in_reservation
+        WHERE
+            ro.id_hotel_in_room = h.id_hotel
+            AND (
+                r.start_date_of_stay <= '2023-07-20'
+                AND r.end_date_of_stay >= '2023-07-18'
+            )
+    );
+
+---------------------------------------------------------------------------
+--11 -Afficher 
+--la liste des chambres qui seront libres (au moins pour un jour) la semaine prochaine
+SELECT
+    h.hotel_city AS ville_hotel,
+    h.hotel_adress AS adresse_hotel,
+    r.room_number AS numero_chambre
+FROM
+    hotel h
+    JOIN room r ON r.id_hotel_in_room = h.id_hotel
+WHERE
+    NOT EXISTS (
+        SELECT 1
+        FROM reservation res
+        WHERE
+            res.id_room_in_reservation = r.id_room
+            AND res.start_date_of_stay <= (CURRENT_DATE + INTERVAL '7 days')
+            AND res.end_date_of_stay >= CURRENT_DATE
+    );
+-----------------------------------------------------------------------------------------
+
